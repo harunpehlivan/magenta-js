@@ -14,7 +14,8 @@
     "protobufjs": "^6.8.6",
     "tfjs": "^0.6.0",
     "tonal": "^2.0.0",
-    "tone": "^0.12.80"
+    "tone": "^0.12.80",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@types/clone": "^0.1.30",
@@ -43,7 +44,7 @@
     "webpack-cli": "^3.1.2"
   },
   "scripts": {
-    "prepublish": "in-publish && yarn lint && yarn test && yarn build && yarn docs && yarn bundle || not-in-publish",
+    "prepublish": "npm run snyk-protect; in-publish && yarn lint && yarn test && yarn build && yarn docs && yarn bundle || not-in-publish",
     "build": "tsc && cp src/protobuf/proto.* es5/protobuf",
     "bundle": "webpack --config ./webpack/lib.config.ts",
     "lint": "tslint -c ../tslint.json -p . -t verbose",
@@ -54,12 +55,14 @@
     "serve-demos": "http-server demos/",
     "serve-dist": "http-server dist/",
     "proto": "sh ./scripts/compile-proto.sh",
-    "docs": "sh ./scripts/generate-docs.sh && yarn publish-demos"
+    "docs": "sh ./scripts/generate-docs.sh && yarn publish-demos",
+    "snyk-protect": "snyk protect"
   },
   "author": "Magenta",
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/tensorflow/magenta-js.git"
-  }
+  },
+  "snyk": true
 }
