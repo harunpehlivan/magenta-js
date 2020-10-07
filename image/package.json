@@ -7,7 +7,7 @@
     "jsdelivr": "dist/magentaimage.js",
     "unpkg": "dist/magentaimage.js",
     "dependencies": {
-        "@tensorflow/tfjs": "^0.14.1"
+        "@tensorflow/tfjs": "^2.5.0"
     },
     "devDependencies": {
         "browserify": "^14.4.0",
